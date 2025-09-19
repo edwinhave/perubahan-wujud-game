@@ -40,6 +40,31 @@ body {
   color: var(--muted);
 }
 
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px 16px 0;
+}
+.tab-btn {
+  background: #eaf0ff;
+  color: #254976;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tab-btn.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.section.hidden {
+  display: none;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1.3fr 0.8fr;
@@ -49,7 +74,7 @@ body {
   margin: 0 auto 40px;
 }
 
-/* Kartu wujud */
+/* Kartu wujud/infocard */
 .states {
   display: grid;
   gap: 12px;
@@ -109,7 +134,7 @@ body {
 }
 .drop-row {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 180px 1fr;
   gap: 10px;
   align-items: center;
 }
@@ -225,7 +250,7 @@ body {
   box-shadow: 0 6px 14px rgba(255, 209, 102, 0.35);
 }
 
-/* Modal */
+/* Modal & Toast */
 .modal {
   position: fixed;
   inset: 0;
@@ -277,9 +302,15 @@ body {
     grid-template-columns: 1fr;
   }
   .states {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #section-wujud .states {
     grid-template-columns: repeat(3, 1fr);
   }
   .labels {
     order: 3;
+  }
+  .drop-row {
+    grid-template-columns: 1fr;
   }
 }

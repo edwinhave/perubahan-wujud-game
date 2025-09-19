@@ -3,142 +3,254 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Game Perubahan Wujud Benda (SD)</title>
+    <title>Game Sains SD — Perubahan Wujud & Energi</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="app-header">
-      <h1>Game Perubahan Wujud Benda</h1>
+      <h1>Game Sains SD</h1>
       <p class="subtitle">
-        Cocokkan proses yang tepat antara <b>Padat</b>, <b>Cair</b>, dan
-        <b>Gas</b>!
+        Pelajari <b>Perubahan Wujud Benda</b> & <b>Perubahan Energi</b> lewat
+        permainan!
       </p>
     </header>
 
-    <main class="container">
-      <!-- Kartu wujud benda -->
-      <section class="states">
-        <div class="state-card state-padat" aria-label="Padat">
+    <!-- Tabs -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-target="#section-wujud">
+        Bagian 1: Perubahan Wujud
+      </button>
+      <button class="tab-btn" data-target="#section-energi">
+        Bagian 2: Perubahan Energi
+      </button>
+    </nav>
+
+    <!-- ===================== Bagian 1: Perubahan Wujud ===================== -->
+    <section id="section-wujud" class="section">
+      <main class="container">
+        <!-- Kartu wujud benda -->
+        <section class="states">
+          <div class="state-card state-padat" aria-label="Padat">
+            <div
+              class="state-image"
+              role="img"
+              aria-label="Gambar benda padat"
+            ></div>
+            <div class="state-label">PADAT</div>
+          </div>
+          <div class="state-card state-cair" aria-label="Cair">
+            <div
+              class="state-image"
+              role="img"
+              aria-label="Gambar benda cair"
+            ></div>
+            <div class="state-label">CAIR</div>
+          </div>
+          <div class="state-card state-gas" aria-label="Gas">
+            <div
+              class="state-image"
+              role="img"
+              aria-label="Gambar benda gas"
+            ></div>
+            <div class="state-label">GAS</div>
+          </div>
+        </section>
+
+        <!-- Papan permainan -->
+        <section class="board">
+          <div class="info-bar">
+            <div>Benar: <b id="progress-w">0</b>/6</div>
+            <div>Waktu: <b id="timer-w">00:00</b></div>
+            <div>Rekor Terbaik: <b id="best-w">—</b></div>
+          </div>
+
+          <div class="dropzones" id="dropzones-w">
+            <!-- Enam rute perubahan wujud -->
+            <div class="drop-row" data-key="Padat>Cair">
+              <div class="dir">Padat → Cair</div>
+              <div class="dropzone">Taruh label proses di sini</div>
+            </div>
+            <div class="drop-row" data-key="Cair>Padat">
+              <div class="dir">Cair → Padat</div>
+              <div class="dropzone">Taruh label proses di sini</div>
+            </div>
+            <div class="drop-row" data-key="Cair>Gas">
+              <div class="dir">Cair → Gas</div>
+              <div class="dropzone">Taruh label proses di sini</div>
+            </div>
+            <div class="drop-row" data-key="Gas>Cair">
+              <div class="dir">Gas → Cair</div>
+              <div class="dropzone">Taruh label proses di sini</div>
+            </div>
+            <div class="drop-row" data-key="Padat>Gas">
+              <div class="dir">Padat → Gas</div>
+              <div class="dropzone">Taruh label proses di sini</div>
+            </div>
+            <div class="drop-row" data-key="Gas>Padat">
+              <div class="dir">Gas → Padat</div>
+              <div class="dropzone">Taruh label proses di sini</div>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <button id="btn-shuffle-w" class="btn">Aduk Ulang Label</button>
+            <button id="btn-reset-w" class="btn btn-secondary">Reset</button>
+            <button id="btn-bantuan-w" class="btn btn-help">
+              Bantuan / Contoh
+            </button>
+          </div>
+        </section>
+
+        <!-- Panel label proses (drag me!) -->
+        <aside class="labels">
+          <h3>Label Proses</h3>
           <div
-            class="state-image"
-            role="img"
-            aria-label="Gambar benda padat"
+            id="label-list-w"
+            class="label-list"
+            aria-label="Daftar label proses yang bisa diseret"
           ></div>
-          <div class="state-label">PADAT</div>
-        </div>
-        <div class="state-card state-cair" aria-label="Cair">
+        </aside>
+      </main>
+    </section>
+
+    <!-- ===================== Bagian 2: Perubahan Energi ===================== -->
+    <section id="section-energi" class="section hidden">
+      <main class="container">
+        <!-- Panel informasi energi (tanpa gambar khusus, agar ringan) -->
+        <section class="states">
+          <div class="state-card">
+            <div class="state-label">Contoh Perubahan Energi</div>
+            <div style="padding: 10px; color: #6a7b8c">
+              Seret label jenis perubahan energi yang sesuai dengan contoh di
+              sebelah.
+            </div>
+          </div>
+          <div class="state-card">
+            <div class="state-label">Jenis Energi (Ringkas)</div>
+            <div style="padding: 10px; color: #6a7b8c">
+              Listrik, Cahaya, Panas, Gerak, Bunyi, Kimia.
+            </div>
+          </div>
+        </section>
+
+        <!-- Papan permainan Energi -->
+        <section class="board">
+          <div class="info-bar">
+            <div>Benar: <b id="progress-e">0</b>/8</div>
+            <div>Waktu: <b id="timer-e">00:00</b></div>
+            <div>Rekor Terbaik: <b id="best-e">—</b></div>
+          </div>
+
+          <div class="dropzones" id="dropzones-e">
+            <div class="drop-row" data-key="Lampu">
+              <div class="dir">Lampu Menyala</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+            <div class="drop-row" data-key="Kipas">
+              <div class="dir">Kipas Angin</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+            <div class="drop-row" data-key="Bensin">
+              <div class="dir">Pembakaran Bensin</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+            <div class="drop-row" data-key="Kompor">
+              <div class="dir">Kompor Gas</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+            <div class="drop-row" data-key="Surya">
+              <div class="dir">Panel Surya</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+            <div class="drop-row" data-key="Musik">
+              <div class="dir">Alat Musik</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+            <div class="drop-row" data-key="Ponsel">
+              <div class="dir">Ponsel</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+            <div class="drop-row" data-key="Komputer">
+              <div class="dir">Komputer / Laptop</div>
+              <div class="dropzone">Taruh label di sini</div>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <button id="btn-shuffle-e" class="btn">Aduk Ulang Label</button>
+            <button id="btn-reset-e" class="btn btn-secondary">Reset</button>
+            <button id="btn-bantuan-e" class="btn btn-help">
+              Bantuan / Tips
+            </button>
+          </div>
+        </section>
+
+        <!-- Label Energi -->
+        <aside class="labels">
+          <h3>Label Perubahan Energi</h3>
           <div
-            class="state-image"
-            role="img"
-            aria-label="Gambar benda cair"
+            id="label-list-e"
+            class="label-list"
+            aria-label="Daftar label energi yang bisa diseret"
           ></div>
-          <div class="state-label">CAIR</div>
-        </div>
-        <div class="state-card state-gas" aria-label="Gas">
-          <div
-            class="state-image"
-            role="img"
-            aria-label="Gambar benda gas"
-          ></div>
-          <div class="state-label">GAS</div>
-        </div>
-      </section>
+        </aside>
+      </main>
+    </section>
 
-      <!-- Papan permainan -->
-      <section class="board">
-        <div class="info-bar">
-          <div id="progress">Benar: <b>0</b>/6</div>
-          <div id="timer">Waktu: <b>00:00</b></div>
-          <div id="best">Rekor Terbaik: <b>—</b></div>
-        </div>
-
-        <div class="dropzones" id="dropzones">
-          <!-- Enam rute perubahan wujud -->
-          <div class="drop-row" data-from="Padat" data-to="Cair">
-            <div class="dir">Padat → Cair</div>
-            <div class="dropzone" aria-label="Dropzone Padat ke Cair">
-              Taruh label proses di sini
-            </div>
-          </div>
-          <div class="drop-row" data-from="Cair" data-to="Padat">
-            <div class="dir">Cair → Padat</div>
-            <div class="dropzone" aria-label="Dropzone Cair ke Padat">
-              Taruh label proses di sini
-            </div>
-          </div>
-          <div class="drop-row" data-from="Cair" data-to="Gas">
-            <div class="dir">Cair → Gas</div>
-            <div class="dropzone" aria-label="Dropzone Cair ke Gas">
-              Taruh label proses di sini
-            </div>
-          </div>
-          <div class="drop-row" data-from="Gas" data-to="Cair">
-            <div class="dir">Gas → Cair</div>
-            <div class="dropzone" aria-label="Dropzone Gas ke Cair">
-              Taruh label proses di sini
-            </div>
-          </div>
-          <div class="drop-row" data-from="Padat" data-to="Gas">
-            <div class="dir">Padat → Gas</div>
-            <div class="dropzone" aria-label="Dropzone Padat ke Gas">
-              Taruh label proses di sini
-            </div>
-          </div>
-          <div class="drop-row" data-from="Gas" data-to="Padat">
-            <div class="dir">Gas → Padat</div>
-            <div class="dropzone" aria-label="Dropzone Gas ke Padat">
-              Taruh label proses di sini
-            </div>
-          </div>
-        </div>
-
-        <div class="toolbar">
-          <button id="btn-shuffle" class="btn">Aduk Ulang Label</button>
-          <button id="btn-reset" class="btn btn-secondary">Reset</button>
-          <button id="btn-bantuan" class="btn btn-help">
-            Bantuan / Contoh
-          </button>
-        </div>
-      </section>
-
-      <!-- Panel label proses (drag me!) -->
-      <aside class="labels">
-        <h3>Label Proses</h3>
-        <div
-          id="label-list"
-          class="label-list"
-          aria-label="Daftar label proses yang bisa diseret"
-        >
-          <!-- Diisi via JS agar mudah reset/shuffle -->
-        </div>
-      </aside>
-    </main>
-
-    <!-- Dialog bantuan -->
+    <!-- Modal Bantuan Wujud -->
     <div
-      id="help-modal"
+      id="help-modal-w"
       class="modal hidden"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="help-title"
+      aria-labelledby="help-title-w"
     >
       <div class="modal-content">
-        <h3 id="help-title">Contoh Sehari-hari</h3>
+        <h3 id="help-title-w">Contoh Sehari-hari (Perubahan Wujud)</h3>
         <ul>
           <li><b>Mencair</b>: Es batu → air</li>
           <li><b>Membeku</b>: Air → es batu</li>
           <li><b>Menguap</b>: Air panas → uap air</li>
           <li><b>Mengembun</b>: Uap di udara → titik air di kaca</li>
-          <li><b>Menyublim</b>: Kamper/kapur barus → gas</li>
+          <li><b>Menyublim</b>: Kapur barus → gas</li>
           <li>
             <b>Deposisi (Mengkristal)</b>: Uap air → kristal es (embun beku)
           </li>
         </ul>
-        <button id="btn-close-help" class="btn btn-secondary">Tutup</button>
+        <button id="btn-close-help-w" class="btn btn-secondary">Tutup</button>
       </div>
     </div>
 
-    <!-- Notifikasi kemenangan -->
+    <!-- Modal Bantuan Energi -->
+    <div
+      id="help-modal-e"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="help-title-e"
+    >
+      <div class="modal-content">
+        <h3 id="help-title-e">Tips (Perubahan Energi)</h3>
+        <ul>
+          <li><b>Listrik → Cahaya</b>: Lampu menyala.</li>
+          <li><b>Listrik → Gerak</b>: Motor kipas berputar.</li>
+          <li>
+            <b>Kimia → Panas (+ Gerak)</b>: Bensin terbakar menggerakkan mesin.
+          </li>
+          <li><b>Kimia → Panas</b>: Api kompor memanaskan panci.</li>
+          <li><b>Cahaya → Listrik</b>: Panel surya menghasilkan listrik.</li>
+          <li><b>Gerak → Bunyi</b>: Senar gitar dipetik menghasilkan bunyi.</li>
+          <li>
+            <b>Kimia → Listrik → Bunyi + Cahaya</b>: Baterai ponsel memberi daya
+            ke layar & speaker.
+          </li>
+          <li><b>Listrik → Cahaya + Bunyi</b>: Layar & speaker laptop.</li>
+        </ul>
+        <button id="btn-close-help-e" class="btn btn-secondary">Tutup</button>
+      </div>
+    </div>
+
+    <!-- Notifikasi kemenangan (dipakai bersama) -->
     <div id="win-toast" class="toast hidden" role="status" aria-live="polite">
       Hebat! Semua benar! 🎉
     </div>
